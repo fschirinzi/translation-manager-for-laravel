@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Fschirinzi\TranslationManager\Commands;
 
@@ -46,17 +48,17 @@ class ValidateTranslations extends Command
 
         $this->validateMissingLocales();
 
-        $this->info('Lookup directory: ' . $pathToLocates);
+        $this->info('Lookup directory: '.$pathToLocates);
 
         $itemsThatMissTranslation = $this->translations->where('missingIn');
-        if($itemsThatMissTranslation->count()){
-            $itemsThatMissTranslation = $itemsThatMissTranslation->map(function($item) {
+        if ($itemsThatMissTranslation->count()) {
+            $itemsThatMissTranslation = $itemsThatMissTranslation->map(function ($item) {
                 return $item
                     ->put('missingIn', join(',', $item->get('missingIn')))
                     ->put('foundIn', join(',', $item->get('foundIn')))
                     ->only(['file', 'key', 'foundIn', 'missingIn']);
             })
-                ->sortBy(['key'])->sortBy(['file']) # Reverse sort; see https://github.com/laravel/ideas/issues/11
+                ->sortBy(['key'])->sortBy(['file']) // Reverse sort; see https://github.com/laravel/ideas/issues/11
                 ->toArray();
 
             $this->table(['File', 'Key', 'Found in', 'Missing in'], $itemsThatMissTranslation);
@@ -67,11 +69,14 @@ class ValidateTranslations extends Command
         return $this->exitCode;
     }
 
-    private function loadAllLocales($localeDirectories){
-        foreach($localeDirectories as $localeDirectory) {
+    private function loadAllLocales($localeDirectories)
+    {
+        foreach ($localeDirectories as $localeDirectory) {
             $rootLocalePath = dirname($localeDirectory);
             $locale = basename($localeDirectory);
-            if(!in_array($locale, $this->locales)){ array_push($this->locales, $locale); }
+            if (! in_array($locale, $this->locales)) {
+                array_push($this->locales, $locale);
+            }
 
             $baseLocaleDirectoryPath = $localeDirectory;
             $baseLocaleFiles = $this->getFilenames($baseLocaleDirectoryPath);
@@ -80,14 +85,14 @@ class ValidateTranslations extends Command
                 $loadedLocale = File::getRequire("{$baseLocaleDirectoryPath}/{$file}");
                 $keys = $this->getAbolsutePathRecursive($loadedLocale);
 
-                foreach($keys as $key){
+                foreach ($keys as $key) {
                     $item = $this->translations
                         ->where('folder', $rootLocalePath)
                         ->where('file', $file)
                         ->where('key', $key)
                         ->first();
 
-                    if($item) {
+                    if ($item) {
                         $item->put('foundIn', array_merge($item->get('foundIn'), [$locale]));
                     } else {
                         $this->translations->push(collect([
@@ -99,37 +104,37 @@ class ValidateTranslations extends Command
                     }
                 }
             }
-
         }
-
     }
 
-    private function getAbolsutePathRecursive($arr, $parentKey = null){
+    private function getAbolsutePathRecursive($arr, $parentKey = null)
+    {
         $keys = [];
 
         foreach ($arr as $key => $val) {
             if (is_array($val)) {
                 $keys = array_merge($keys, $this->getAbolsutePathRecursive($val, $key));
             } else {
-                array_push($keys, ($parentKey ? "{$parentKey}." : '' ) . $key);
+                array_push($keys, ($parentKey ? "{$parentKey}." : '').$key);
             }
         }
 
         return $keys;
     }
 
-    private function validateMissingLocales(){
-        $this->translations->each(function($item){
+    private function validateMissingLocales()
+    {
+        $this->translations->each(function ($item) {
             $item->put('missingIn', array_diff($this->locales, $item->get('foundIn')));
         });
 
-        if($this->translations->where('missingIn')->count()){
+        if ($this->translations->where('missingIn')->count()) {
             $this->exitCode = 1;
         }
     }
 
     /**
-     * Get filenames of directory
+     * Get filenames of directory.
      */
     private function getFilenames(string $directory): array
     {

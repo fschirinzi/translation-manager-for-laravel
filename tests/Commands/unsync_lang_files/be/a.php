@@ -7,7 +7,7 @@ return [
 
     'group' => [
         'nested' => 'nested', // missing nested item
-        'nested2' => 'nested2' // missing nested item
+        'nested2' => 'nested2', // missing nested item
     ],
 
     'missing_group' => [
