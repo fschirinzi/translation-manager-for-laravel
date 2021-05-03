@@ -1,3 +1,6 @@
+<?php
+
+declare(strict_types=1);
 <?php declare(strict_types=1);
 
 namespace Fschirinzi\TranslationManager\Tests\Commands;
@@ -13,7 +16,7 @@ final class ValidateTranslationsTest extends TestCase
         $this->withoutMockingConsoleOutput();
 
         $dir = __DIR__.'/sync_lang_files';
-        $exitCode = $this->artisan("translations:validate", ['--dir' => $dir]);
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
         $this->assertSame(0, $exitCode);
@@ -26,7 +29,7 @@ final class ValidateTranslationsTest extends TestCase
         $this->withoutMockingConsoleOutput();
 
         $dir = __DIR__.'/unsync_lang_files';
-        $exitCode = $this->artisan("translations:validate", ['--dir' => $dir]);
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
         $this->assertSame(1, $exitCode);
@@ -41,7 +44,7 @@ final class ValidateTranslationsTest extends TestCase
         $this->withoutMockingConsoleOutput();
 
         $dir = __DIR__.'/locale-country/sync_lang_files';
-        $exitCode = $this->artisan("translations:validate", ['--dir' => $dir]);
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
         $this->assertSame(0, $exitCode);
@@ -54,7 +57,7 @@ final class ValidateTranslationsTest extends TestCase
         $this->withoutMockingConsoleOutput();
 
         $dir = __DIR__.'/locale-country/unsync_lang_files';
-        $exitCode = $this->artisan("translations:validate", ['--dir' => $dir]);
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
         $this->assertSame(1, $exitCode);
