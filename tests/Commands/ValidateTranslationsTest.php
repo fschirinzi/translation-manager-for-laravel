@@ -44,8 +44,6 @@ final class ValidateTranslationsTest extends TestCase
         $exitCode = $this->artisan("translations:validate", ['--dir' => $dir]);
         $output = Artisan::output();
 
-        print($output);
-
         $this->assertSame(0, $exitCode);
         $this->assertStringContainsString('Successfully compared all languages.', trim($output));
     }
