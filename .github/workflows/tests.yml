@@ -7,23 +7,36 @@ on:
     - cron: '0 0 * * *'
 
 jobs:
-  tests:
-    runs-on: ubuntu-latest
-
+  test:
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
       matrix:
-        php: [7.1, 7.2, 7.3, 7.4, 8.0]
-        laravel: [7.0, 8.0]
+        php: [7.4, 7.3, 7.2, 7.1]
+        laravel: [8.*, 7.*]
+        dependency-version: [prefer-lowest]
+        os: [ubuntu-latest]
+        include:
+          - laravel: 7.*
+            testbench: 5.*
+          - laravel: 6.*
+            testbench: 4.*
+          - laravel: 5.8.*
+            testbench: 3.8.*
 
-    name: PHP ${{ matrix.php }} - Laravel ${{ matrix.laravel }} - ${{ matrix.os }}
+    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.os }}
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.composer/cache/files
+          key: dependencies-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@v1
         with:
           php-version: ${{ matrix.php }}
           coverage: none
