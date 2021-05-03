@@ -1,0 +1,45 @@
+{
+    "name": "fschirinzi/translation-manager-for-laravel",
+    "description": "Package to manage Laravel translations locally",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "fschirinzi",
+        "laravel",
+        "translations"
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "illuminate/console": "^5.8|^6.0|^7.0|^8.0",
+        "illuminate/support": "^5.8|^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^3.8|^4.0|^5.0",
+        "phpunit/phpunit": "^7.5|^8.5|^9.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fschirinzi\\TranslationManager\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fschirinzi\\TranslationManager\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Fschirinzi\\TranslationManager\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
