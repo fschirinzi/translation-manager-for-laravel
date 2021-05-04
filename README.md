@@ -13,13 +13,20 @@
     <img src="https://img.shields.io/packagist/dt/fschirinzi/translation-manager-for-laravel" alt="Total Downloads">
 </a>
 
-Package that helps you with the translation of your laravel application locally.
+Easy to use package that helps you with the translation of your Laravel application locally.
 
 <p align="center"><img style="max-width: 60px;" src="https://user-images.githubusercontent.com/5278175/83045008-a9ce0a80-a04d-11ea-89db-90e709ca7b0d.png" alt="Package logo"></p>
 
 Output:
 
 <p align="center"><img style="max-width: 500px;" src="https://francesco.schirinzi.me/wp-content/uploads/2021/05/translation-manager-for-laravel_output.jpg" alt="Output example"></p>
+
+### Features
+:white_check_mark: Check all locales <br>
+:white_check_mark: Check nested translations <br>
+:white_check_mark: Check nested directories <br>
+:white_check_mark: Display where translations are found <br>
+:white_check_mark: Display where translations are missing <br>
 
 ## Installation
 ```sh

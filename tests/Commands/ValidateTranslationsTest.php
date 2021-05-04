@@ -68,4 +68,33 @@ final class ValidateTranslationsTest extends TestCase
 
         $this->assertStringContainsString('| b.php | CheckMe       | de       | de-CH,en,fr-CH |', $output);
     }
+
+    /** @test */
+    public function it_does_not_report_about_missing_translation_from_children_directories()
+    {
+        $this->withoutMockingConsoleOutput();
+
+        $dir = __DIR__.'/sync_sub_dirs';
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
+        $output = Artisan::output();
+
+        $this->assertSame(0, $exitCode);
+        $this->assertStringContainsString('Successfully compared all languages.', trim($output));
+    }
+
+    /** @test */
+    public function it_reports_about_missing_translation_keys_from_children_directories()
+    {
+        $this->withoutMockingConsoleOutput();
+
+        $DS = \DIRECTORY_SEPARATOR;
+
+        $dir = __DIR__.'/unsync_sub_dirs';
+        $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
+        $output = Artisan::output();
+
+        $this->assertSame(1, $exitCode);
+        $this->assertStringContainsString('| a.php                                | Yes              | en       | be         |', $output);
+        $this->assertStringContainsString("| sub-dir{$DS}sub-sub-dir{$DS}sub-sub-file.php | sub-sub-file-key | en       | be         |", $output);
+    }
 }
