@@ -58,7 +58,7 @@ class ValidateTranslations extends Command
                     ->put('foundIn', join(',', $item->get('foundIn')))
                     ->only(['file', 'key', 'foundIn', 'missingIn']);
             })
-                ->sortBy(['key'])->sortBy(['file']) // Reverse sort; see https://github.com/laravel/ideas/issues/11
+                ->sortBy('key')->sortBy('file') // Reverse sort; see https://github.com/laravel/ideas/issues/11
                 ->toArray();
 
             $this->table(['File', 'Key', 'Found in', 'Missing in'], $itemsThatMissTranslation);
