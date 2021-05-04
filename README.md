@@ -19,7 +19,7 @@ Easy to use package that helps you with the translation of your Laravel applicat
 
 Output:
 
-<p align="center"><img style="max-width: 500px;" src="https://francesco.schirinzi.me/wp-content/uploads/2021/05/translation-manager-for-laravel_output.jpg" alt="Output example"></p>
+<p align="center"><img style="max-width: 500px;" src="https://francesco.schirinzi.me/wp-content/uploads/2021/05/translation-manager-for-laravel_v1.1.0_output.jpg" alt="Output example"></p>
 
 ### Features
 :white_check_mark: Check all locales <br>
