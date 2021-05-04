@@ -141,10 +141,10 @@ class ValidateTranslations extends Command
         $fileNames = [];
 
         /** @var \Symfony\Component\Finder\SplFileInfo[] $filesInFolder */
-        $filesInFolder = File::files($directory);
+        $filesInFolder = File::allFiles($directory);
 
         foreach ($filesInFolder as $fileInfo) {
-            $fileNames[] = $fileInfo->getFilename();
+            $fileNames[] = $fileInfo->getRelativePathname();
         }
 
         return $fileNames;
