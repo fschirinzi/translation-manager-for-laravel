@@ -27,14 +27,14 @@ composer require fschirinzi/translation-manager-for-laravel --dev
 ```
 
 ## Usage
-Use default locate as base and default Laravel's path to lang files:
+Use default Laravel's path to lang files:
 ```sh
 php artisan translations:validate
 ```
 
 You can specify a relative or absolute path to `lang` directory location:
 ```sh
-php artisan translations:validate --dir=/other/dir/with/my-custom-lang
+php artisan translations:validate --dir=/other/dir/with/my-custom-languages
 ```
 
 ## Maintainers
