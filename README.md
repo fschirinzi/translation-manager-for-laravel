@@ -15,10 +15,6 @@
 
 Easy to use package that helps you with the translation of your Laravel application locally.
 
-<p align="center"><img style="max-width: 60px;" src="https://user-images.githubusercontent.com/5278175/83045008-a9ce0a80-a04d-11ea-89db-90e709ca7b0d.png" alt="Package logo"></p>
-
-Output:
-
 <p align="center"><img style="max-width: 500px;" src="https://francesco.schirinzi.me/wp-content/uploads/2021/05/translation-manager-for-laravel_v1.1.0_output.jpg" alt="Output example"></p>
 
 ### Features
