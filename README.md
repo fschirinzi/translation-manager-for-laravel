@@ -23,6 +23,7 @@ Easy to use package that helps you with the translation of your Laravel applicat
 :white_check_mark: Check nested directories <br>
 :white_check_mark: Display where translations are found <br>
 :white_check_mark: Display where translations are missing <br>
+:white_check_mark: Export all translations to CSV for easy sharing with your translator <br>
 
 ## Installation
 ```sh
@@ -30,6 +31,7 @@ composer require fschirinzi/translation-manager-for-laravel --dev
 ```
 
 ## Usage
+### Validation
 Use default Laravel's path to lang files:
 ```sh
 php artisan translations:validate
@@ -39,8 +41,14 @@ You can specify a relative or absolute path to `lang` directory location:
 ```sh
 php artisan translations:validate --dir=/other/dir/with/my-custom-languages
 ```
+### Export
+```sh
+php artisan translations:export -o /tmp/my-translations.csv
+```
 
 ## Maintainers
+
+- [Francesco](https://github.com/fschirinzi)
 
 ## License
 
