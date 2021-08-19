@@ -32,7 +32,7 @@ class ValidateTranslations extends Command
         $tM->setSeparator($this->option('separator'));
         $tM->load();
 
-        $this->info('Lookup directory: '. $tM->getRootLocalePath());
+        $this->info('Lookup directory: '.$tM->getRootLocalePath());
 
         $itemsThatMissTranslation = $tM->getTranslations(true);
         if ($itemsThatMissTranslation->count()) {
@@ -47,7 +47,4 @@ class ValidateTranslations extends Command
 
         return $this->exitCode;
     }
-
-
-
 }

@@ -29,7 +29,9 @@ class TranslationManager
     public function getTranslations(bool $onlyMissingTranslation): Collection
     {
         return $this->translations
-            ->when($onlyMissingTranslation, function($q) { return $q->where('missingIn'); });
+            ->when($onlyMissingTranslation, function ($q) {
+                return $q->where('missingIn');
+            });
     }
 
     /**
@@ -65,22 +67,24 @@ class TranslationManager
     {
         if ($rootLocalePath == '') {
             $this->rootLocalePath = resource_path(self::DEFAULT_LANG_DIRNAME);
+
             return;
         }
 
         if (File::isDirectory($rootLocalePath)) {
             $this->rootLocalePath = $rootLocalePath;
+
             return;
         }
 
         if (File::isDirectory(base_path($rootLocalePath))) {
             $this->rootLocalePath = base_path($rootLocalePath);
+
             return;
         }
 
         throw new DirectoryNotFoundException("Specified resource directory {$rootLocalePath} does not exist.");
     }
-
 
     public function load()
     {
@@ -101,16 +105,17 @@ class TranslationManager
     public function getItemsForExport(): Collection
     {
         return $this->getTranslations(false)
-            ->map(function($item){
-            foreach ($item->get('translations') as $key => $translation) {
-                $item->put("translation_{$key}", $translation);
-            }
-            $item->forget('folder');
-            $item->forget('translations');
-            $item->forget('foundIn');
-            $item->forget('missingIn');
-            return $item;
-        });
+            ->map(function ($item) {
+                foreach ($item->get('translations') as $key => $translation) {
+                    $item->put("translation_{$key}", $translation);
+                }
+                $item->forget('folder');
+                $item->forget('translations');
+                $item->forget('foundIn');
+                $item->forget('missingIn');
+
+                return $item;
+            });
     }
 
     public function createExportFile($outputPath)
@@ -167,7 +172,7 @@ class TranslationManager
                             'file' => $file,
                             'key' => $key,
                             'foundIn' => [$locale],
-                            'translations' => collect([$locale => $translation])
+                            'translations' => collect([$locale => $translation]),
                         ]));
                     }
                 }
@@ -218,14 +223,14 @@ class TranslationManager
         return $fileNames;
     }
 
-    public function getNestedItems($input, $levels = array()){
+    public function getNestedItems($input, $levels = [])
+    {
         $output = $input;
 
-        foreach($levels as $level) {
+        foreach ($levels as $level) {
             $output = $output[$level];
         }
 
         return $output;
     }
-
 }
