@@ -61,9 +61,9 @@ class TranslationManager
     }
 
     /**
-     * @param string $rootLocalePath
+     * @param string|null $rootLocalePath
      */
-    public function setRootLocalePath(string $rootLocalePath): void
+    public function setRootLocalePath(?string $rootLocalePath = ''): void
     {
         if ($rootLocalePath == '') {
             $this->rootLocalePath = resource_path(self::DEFAULT_LANG_DIRNAME);
