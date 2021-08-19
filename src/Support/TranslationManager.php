@@ -223,13 +223,13 @@ class TranslationManager
         return $fileNames;
     }
 
-    public function getNestedItems($input, $levels = [])
+    private function getNestedItems($input, $levels = [])
     {
         $output = $input;
 
         foreach ($levels as $level) {
             if (! is_array($output) || ! array_key_exists($level, $output)) {
-                break;
+                return null;
             }
             $output = $output[$level];
         }
