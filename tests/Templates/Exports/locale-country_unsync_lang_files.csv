@@ -1,0 +1,8 @@
+file,key,translation_de,translation_de-CH,translation_en,translation_fr-CH
+a.php,Yes,Ja,Ja,Yes,Oui
+a.php,No,Nein,Nein,No,Non
+a.php,only_in_de,only_in_de,,,
+b.php,File_only_in_de,Ja,,,
+a.php,only_in_de-CH,,only_in_de-CH,,
+a.php,only_in_en,,,only_in_en,
+a.php,only_in_fr-CH,,,,only_in_fr-CH
