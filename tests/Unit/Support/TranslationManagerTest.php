@@ -6,7 +6,6 @@ namespace Fschirinzi\TranslationManager\Tests\Unit\Support;
 
 use Fschirinzi\TranslationManager\Support\TranslationManager;
 use Fschirinzi\TranslationManager\Tests\TestCase;
-use TypeError;
 
 final class TranslationManagerTest extends TestCase
 {
