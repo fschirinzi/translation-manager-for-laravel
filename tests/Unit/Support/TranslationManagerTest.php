@@ -17,4 +17,11 @@ final class TranslationManagerTest extends TestCase
         $this->assertStringContainsString('/resources/lang', $tM->getRootLocalePath());
     }
 
+    /** @test */
+    public function it_can_load_data()
+    {
+        $tM = new TranslationManager(null);
+        $tM->load();
+        $this->assertStringContainsString('/resources/lang', $tM->getRootLocalePath());
+    }
 }
