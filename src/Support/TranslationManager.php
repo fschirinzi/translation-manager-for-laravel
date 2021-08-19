@@ -228,7 +228,7 @@ class TranslationManager
         $output = $input;
 
         foreach ($levels as $level) {
-            if(!is_array($output) || !array_key_exists($level, $output)){
+            if (! is_array($output) || ! array_key_exists($level, $output)) {
                 break;
             }
             $output = $output[$level];
