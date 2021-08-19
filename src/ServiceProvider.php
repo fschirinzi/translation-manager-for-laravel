@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Fschirinzi\TranslationManager;
 
+use Fschirinzi\TranslationManager\Commands\ExportTranslations;
 use Fschirinzi\TranslationManager\Commands\ValidateTranslations;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -18,6 +19,7 @@ class ServiceProvider extends BaseServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ValidateTranslations::class,
+                ExportTranslations::class,
             ]);
         }
     }
