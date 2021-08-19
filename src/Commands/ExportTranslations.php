@@ -31,12 +31,11 @@ class ExportTranslations extends Command
         $tM = new TranslationManager($this->option('dir'));
         $tM->load();
 
-        $this->info('Lookup directory: '. $tM->getRootLocalePath());
-        $this->info('Export directory: '. $this->option('output'));
+        $this->info('Lookup directory: '.$tM->getRootLocalePath());
+        $this->info('Export directory: '.$this->option('output'));
 
         $tM->createExportFile($this->option('output'));
 
         return $this->exitCode;
     }
-
 }
