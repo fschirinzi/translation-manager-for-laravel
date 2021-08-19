@@ -14,7 +14,7 @@ final class ValidateTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/sync_lang_files';
+        $dir = __DIR__.'/../../Templates/sync_lang_files';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
@@ -27,7 +27,7 @@ final class ValidateTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/unsync_lang_files';
+        $dir = __DIR__.'/../../Templates/unsync_lang_files';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
@@ -42,7 +42,7 @@ final class ValidateTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/locale-country/sync_lang_files';
+        $dir = __DIR__.'/../../Templates/locale-country/sync_lang_files';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
@@ -55,7 +55,7 @@ final class ValidateTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/locale-country/unsync_lang_files';
+        $dir = __DIR__.'/../../Templates/locale-country/unsync_lang_files';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
@@ -72,7 +72,7 @@ final class ValidateTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/sync_sub_dirs';
+        $dir = __DIR__.'/../../Templates/sync_sub_dirs';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 
@@ -87,7 +87,7 @@ final class ValidateTranslationsTest extends TestCase
 
         $DS = \DIRECTORY_SEPARATOR;
 
-        $dir = __DIR__ . '/../../Templates/unsync_sub_dirs';
+        $dir = __DIR__.'/../../Templates/unsync_sub_dirs';
         $exitCode = $this->artisan('translations:validate', ['--dir' => $dir]);
         $output = Artisan::output();
 

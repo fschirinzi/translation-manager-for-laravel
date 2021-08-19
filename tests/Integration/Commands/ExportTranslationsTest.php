@@ -13,16 +13,15 @@ final class ExportTranslationsTest extends TestCase
     {
         $this->withoutMockingConsoleOutput();
 
-        $dir = __DIR__ . '/../../Templates/locale-country/unsync_lang_files';
+        $dir = __DIR__.'/../../Templates/locale-country/unsync_lang_files';
         $tmpOutputDir = '/tmp';
-        $tmpOutputFilepath = $tmpOutputDir . '/locale-country_unsync_lang_files.csv';
+        $tmpOutputFilepath = $tmpOutputDir.'/locale-country_unsync_lang_files.csv';
         $exitCode = $this->artisan(
             'translations:export', ['--dir' => $dir, '-o' => $tmpOutputFilepath]
         );
 
-        $original = __DIR__ . '/../../Templates/Exports/locale-country_unsync_lang_files.csv';
+        $original = __DIR__.'/../../Templates/Exports/locale-country_unsync_lang_files.csv';
         $this->assertEquals(file_get_contents($original), file_get_contents($tmpOutputFilepath));
         $this->assertSame(0, $exitCode);
     }
-
 }
