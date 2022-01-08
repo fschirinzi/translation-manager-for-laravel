@@ -11,6 +11,7 @@ class ValidateTranslations extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'translations:validate
@@ -19,6 +20,7 @@ class ValidateTranslations extends Command
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Lists all locale files and their missing translations.';

@@ -43,7 +43,7 @@ class TranslationManager
     }
 
     /**
-     * @param string $separator
+     * @param  string  $separator
      */
     public function setSeparator(string $separator): void
     {
@@ -61,7 +61,7 @@ class TranslationManager
     }
 
     /**
-     * @param string|null $rootLocalePath
+     * @param  string|null  $rootLocalePath
      */
     public function setRootLocalePath(?string $rootLocalePath = ''): void
     {
