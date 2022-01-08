@@ -11,6 +11,7 @@ class ExportTranslations extends Command
 {
     /**
      * The name and signature of the console command.
+     *
      * @var string
      */
     protected $signature = 'translations:export
@@ -19,6 +20,7 @@ class ExportTranslations extends Command
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Export translations to csv.';
