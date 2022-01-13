@@ -12,15 +12,15 @@ final class TranslationManagerTest extends TestCase
     /** @test */
     public function it_does_check_default_path()
     {
-        $tM = new TranslationManager(null);
-        $this->assertStringContainsString('/resources/lang', $tM->getRootLocalePath());
+        $tM = new TranslationManager();
+        $this->assertStringContainsString(TestCase::getLangPath(), $tM->getRootLocalePath());
     }
 
     /** @test */
     public function it_can_load_data()
     {
-        $tM = new TranslationManager(null);
+        $tM = new TranslationManager();
         $tM->load();
-        $this->assertStringContainsString('/resources/lang', $tM->getRootLocalePath());
+        $this->assertStringContainsString(TestCase::getLangPath(), $tM->getRootLocalePath());
     }
 }
