@@ -13,7 +13,7 @@ final class TranslationManagerTest extends TestCase
     public function it_does_check_default_path()
     {
         $tM = new TranslationManager();
-        $this->assertStringContainsString(lang_path(), $tM->getRootLocalePath());
+        $this->assertStringContainsString(TestCase::getLangPath(), $tM->getRootLocalePath());
     }
 
     /** @test */
@@ -21,6 +21,6 @@ final class TranslationManagerTest extends TestCase
     {
         $tM = new TranslationManager();
         $tM->load();
-        $this->assertStringContainsString(lang_path(), $tM->getRootLocalePath());
+        $this->assertStringContainsString(TestCase::getLangPath(), $tM->getRootLocalePath());
     }
 }

@@ -20,4 +20,13 @@ abstract class TestCase extends Orchestra
     {
         return [ServiceProvider::class];
     }
+
+    protected static function getLangPath(): string
+    {
+        if ( function_exists('lang_path') ) {
+            return lang_path();
+        }
+
+        return resource_path('lang');
+    }
 }
