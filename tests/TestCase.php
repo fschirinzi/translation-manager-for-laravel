@@ -23,7 +23,7 @@ abstract class TestCase extends Orchestra
 
     protected static function getLangPath(): string
     {
-        if ( function_exists('lang_path') ) {
+        if (function_exists('lang_path')) {
             return lang_path();
         }
 

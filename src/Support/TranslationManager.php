@@ -65,7 +65,7 @@ class TranslationManager
     public function setRootLocalePath(?string $rootLocalePath = null): void
     {
         if (empty($rootLocalePath)) {
-            $this->rootLocalePath = self::lang_path();
+            $this->rootLocalePath = self::langPath();
 
             return;
         }
@@ -236,9 +236,9 @@ class TranslationManager
         return $output;
     }
 
-    protected static function lang_path() : string
+    protected static function langPath(): string
     {
-        if ( function_exists('lang_path') ) {
+        if (function_exists('lang_path')) {
             return lang_path();
         }
 
