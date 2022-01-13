@@ -8,7 +8,6 @@ use Symfony\Component\Finder\Exception\DirectoryNotFoundException;
 
 class TranslationManager
 {
-    private const DEFAULT_LANG_DIRNAME = 'lang';
     private const DEFAULT_KEY_SEPARATOR = '__.__';
 
     private $separator;
@@ -16,10 +15,10 @@ class TranslationManager
     private $rootLocalePath;
     private $locales = [];
 
-    public function __construct($rootLocalePath)
+    public function __construct(?string $rootLocalePath = null)
     {
         $this->translations = collect();
-        $this->setSeparator('');
+        $this->setSeparator();
         $this->setRootLocalePath($rootLocalePath);
     }
 
@@ -45,9 +44,9 @@ class TranslationManager
     /**
      * @param  string  $separator
      */
-    public function setSeparator(string $separator): void
+    public function setSeparator(?string $separator = null): void
     {
-        $this->separator = $separator == ''
+        $this->separator = empty($separator)
             ? self::DEFAULT_KEY_SEPARATOR
             : $separator;
     }
@@ -63,10 +62,10 @@ class TranslationManager
     /**
      * @param  string|null  $rootLocalePath
      */
-    public function setRootLocalePath(?string $rootLocalePath = ''): void
+    public function setRootLocalePath(?string $rootLocalePath = null): void
     {
-        if ($rootLocalePath == '') {
-            $this->rootLocalePath = resource_path(self::DEFAULT_LANG_DIRNAME);
+        if (empty($rootLocalePath)) {
+            $this->rootLocalePath = lang_path();
 
             return;
         }
